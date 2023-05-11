@@ -6,7 +6,7 @@
 /*   By: dtome-pe <dtome-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:12:58 by dtome-pe          #+#    #+#             */
-/*   Updated: 2023/05/10 13:52:12 by dtome-pe         ###   ########.fr       */
+/*   Updated: 2023/05/11 08:35:28 by dtome-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	{	
 		tmp = ft_lstnew(curr->content);
 		if (!tmp)
-		{
-			ft_lstclear(&tmp, del);
+		{	
+			ft_lstclear(&new, del);
 			return (NULL);
 		}	
 		tmp->content = f(tmp->content);

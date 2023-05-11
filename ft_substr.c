@@ -6,21 +6,37 @@
 /*   By: dtome-pe <dtome-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 10:07:12 by dtome-pe          #+#    #+#             */
-/*   Updated: 2023/05/10 14:26:05 by dtome-pe         ###   ########.fr       */
+/*   Updated: 2023/05/11 08:28:14 by dtome-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include <stdlib.h>
+#include <stdio.h>
 
-static size_t	ft_calculate_nbytes(size_t str_len, size_t nbytes,
-					unsigned int start, size_t len)
+static size_t	ft_strlen(const char *s)
 {
-	nbytes = (str_len - start) - (str_len - len);
-	if (nbytes < 0)
-		nbytes *= -1;
-	++nbytes;
-	return (nbytes);
+	unsigned int	c;
+
+	c = 0;
+	while (*s)
+	{
+		c++;
+		s++;
+	}
+	return (c);
+}
+
+static size_t	ft_substrlen(const char *s, unsigned start, size_t len)
+{
+	unsigned int	c;
+
+	c = 0;
+	while (s[start] && c < len)
+	{
+		c++;
+		start++;
+	}
+	return (c);
 }
 
 static char	*ft_null_string(void)
@@ -38,21 +54,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char			*substr;
 	unsigned long	i;
-	size_t			str_len;
-	size_t			nbytes;
+	size_t			substr_len;
 
-	nbytes = 0;
 	i = 0;
-	str_len = ft_strlen(s);
-	if (start >= ft_strlen(s) || len == 0)
+	if (start >= ft_strlen(s) || len == 0 || ft_strlen(s) == 0)
 		return (ft_null_string());
-	if (len > ft_strlen(s))
-		substr = (char *)malloc(sizeof (char) * (str_len + 1));
-	else
-	{
-		nbytes = ft_calculate_nbytes(str_len, nbytes, start, len);
-		substr = (char *)malloc(sizeof (char) * nbytes);
-	}
+	substr_len = ft_substrlen(s, start, len);
+	substr = (char *)malloc(sizeof (char) * (substr_len + 1));
 	if (!substr)
 		return (NULL);
 	while (i < len && s[start])
@@ -61,8 +69,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (substr);
 }
 /*
-#include <stdio.h>
-
 int main(void)
 {
 	
