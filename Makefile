@@ -15,27 +15,30 @@ OBJS =  ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o \
 		ft_substr.o ft_tolower.o ft_toupper.o ft_strmapi.o ft_striteri.o \
 		ft_putchar_fd.o ft_putstr_fd.o ft_putendl_fd.o ft_putnbr_fd.o \
 		
-SRC_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
-			ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
-			ft_lstmap.c
-OBJ_BONUS = ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o \
-			ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o \
-			ft_lstmap.o
+SRC_BONUS = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c ft_lstlast_bonus.c \
+			ft_lstadd_back_bonus.c ft_lstdelone_bonus.c ft_lstclear_bonus.c ft_lstiter_bonus.c \
+			ft_lstmap_bonus.c
+OBJ_BONUS = ft_lstnew_bonus.o ft_lstadd_front_bonus.o ft_lstsize_bonus.o ft_lstlast_bonus.o \
+			ft_lstadd_back_bonus.o ft_lstdelone_bonus.o ft_lstclear_bonus.o ft_lstiter_bonus.o \
+			ft_lstmap_bonus.o
 CFLAGS = -Wall -Werror -Wextra -I .
 
 all: $(NAME)
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) ./libft.h
 	ar rcs $(NAME) $(OBJS) 
 
-bonus: $(OBJS) $(OBJ_BONUS)
-	ar rcs $(NAME) $(OBJS) $(OBJ_BONUS)
+bonus: .bonus
+
+.bonus: $(NAME) $(OBJ_BONUS)
+	ar rcs $(NAME) $(OBJ_BONUS)
+	touch .bonus
 
 %.o : %.c
 	gcc -c  $(CFLAGS) $< -o $@
 
 clean:
-	rm -f *.o
+	rm -f *.o .bonus
 
 fclean: clean
 	rm -f $(NAME)
