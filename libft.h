@@ -6,7 +6,7 @@
 /*   By: dtome-pe <dtome-pe@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 09:35:45 by dtome-pe          #+#    #+#             */
-/*   Updated: 2023/05/29 13:35:44 by dtome-pe         ###   ########.fr       */
+/*   Updated: 2023/05/29 13:52:46 by dtome-pe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,27 +97,27 @@ void		ft_reverse_tab(int *tab, int n);
 void		ft_printarr(int *arr, int n);
 
 /*printf*/
-size_t	check_conversions(va_list args, char const *str);
-int		ft_printf(char const *str, ...);
-size_t	ft_printadd(void *ptr);
-size_t	ft_printchar(char c);
-size_t	ft_printhex(unsigned int n, char *base);
-size_t	ft_printnbr(int n);
-size_t	ft_printstr(char *s);
-size_t	ft_printunbr(unsigned int n);
-int		ft_isprint(int c);
+size_t		check_conversions(va_list args, char const *str);
+int			ft_printf(char const *str, ...);
+size_t		ft_printadd(void *ptr);
+size_t		ft_printchar(char c);
+size_t		ft_printhex(unsigned int n, char *base);
+size_t		ft_printnbr(int n);
+size_t		ft_printstr(char *s);
+size_t		ft_printunbr(unsigned int n);
+int			ft_isprint(int c);
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
 
 /*get_next_line*/
-char	*get_next_line(int fd);
-char	*ft_get_strjoin(char *tmp, char *buf, size_t n);
-size_t	ft_get_strchr(const char *s, int c, int n);
-void	ft_get_strlcpy(char *dst, const char *src,
-			size_t dstsize, unsigned int start);
-size_t	ft_get_strlen(const char *s);
-char	*ft_get_free(char *tmp);
+char		*get_next_line(int fd);
+char		*ft_get_strjoin(char *tmp, char *buf, size_t n);
+size_t		ft_get_strchr(const char *s, int c, int n);
+void		ft_get_strlcpy(char *dst, const char *src,
+				size_t dstsize, unsigned int start);
+size_t		ft_get_strlen(const char *s);
+char		*ft_get_free(char *tmp);
 
 #endif
