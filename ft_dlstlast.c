@@ -1,39 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_dlstlast.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: theonewhoknew <theonewhoknew@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 10:05:07 by dtome-pe          #+#    #+#             */
-/*   Updated: 2023/05/12 22:54:29 by theonewhokn      ###   ########.fr       */
+/*   Created: 2023/05/09 10:14:11 by dtome-pe          #+#    #+#             */
+/*   Updated: 2023/05/22 12:42:19 by theonewhokn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
-{	
-	const char	*ptr;
-
-	ptr = s;
-	while (*ptr != '\0')
-	{
-		if (*ptr == (char)c)
-			return ((char *)ptr);
-		ptr++;
-	}
-	if (*ptr == '\0' && (char) c == 0)
-		return ((char *) ptr);
-	return (NULL);
-}
-/*
-#include "string.h"
-#include <stdio.h>
-int main(void)
+t_dlist	*ft_dlstlast(t_dlist *lst)
 {
- 	//strchr(s, 't' + 256);
- 	ft_strchr("teste", '\0');
-
+	if (!lst)
+		return (NULL);
+	while (lst != NULL)
+	{
+		if (lst->next == NULL)
+			return (lst);
+		lst = lst->next;
+	}
+	return (lst);
 }
-*/

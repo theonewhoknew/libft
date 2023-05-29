@@ -1,39 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_dlstadd_back.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: theonewhoknew <theonewhoknew@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 10:05:07 by dtome-pe          #+#    #+#             */
-/*   Updated: 2023/05/12 22:54:29 by theonewhokn      ###   ########.fr       */
+/*   Created: 2023/05/09 10:15:24 by dtome-pe          #+#    #+#             */
+/*   Updated: 2023/05/22 13:05:21 by theonewhokn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-char	*ft_strchr(const char *s, int c)
-{	
-	const char	*ptr;
+void	ft_dlstadd_back(t_dlist **head, t_dlist **tail, t_dlist *new)
+{
+	t_dlist	*curr;
 
-	ptr = s;
-	while (*ptr != '\0')
-	{
-		if (*ptr == (char)c)
-			return ((char *)ptr);
-		ptr++;
+	if (!new)
+		return ;
+	if (*head == NULL)
+	{	
+		*head = new;
+		*tail = new;
+		return ;
 	}
-	if (*ptr == '\0' && (char) c == 0)
-		return ((char *) ptr);
-	return (NULL);
+	curr = *head;
+	curr = ft_dlstlast(curr);
+	curr->next = new;
+	new->prev = curr;
+	new->next = NULL;
+	*tail = new;
 }
 /*
-#include "string.h"
-#include <stdio.h>
 int main(void)
-{
- 	//strchr(s, 't' + 256);
- 	ft_strchr("teste", '\0');
-
+{   
+   
+    
 }
+
 */

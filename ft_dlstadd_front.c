@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_dlstadd_front.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: theonewhoknew <theonewhoknew@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/03 10:05:07 by dtome-pe          #+#    #+#             */
-/*   Updated: 2023/05/12 22:54:29 by theonewhokn      ###   ########.fr       */
+/*   Created: 2023/05/09 10:15:03 by dtome-pe          #+#    #+#             */
+/*   Updated: 2023/05/22 18:25:36 by theonewhokn      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strchr(const char *s, int c)
-{	
-	const char	*ptr;
-
-	ptr = s;
-	while (*ptr != '\0')
-	{
-		if (*ptr == (char)c)
-			return ((char *)ptr);
-		ptr++;
-	}
-	if (*ptr == '\0' && (char) c == 0)
-		return ((char *) ptr);
-	return (NULL);
-}
-/*
-#include "string.h"
+#include <stdlib.h>
 #include <stdio.h>
-int main(void)
-{
- 	//strchr(s, 't' + 256);
- 	ft_strchr("teste", '\0');
 
+void	ft_dlstadd_front(t_dlist **lst, t_dlist *new)
+{	
+	if (lst)
+	{
+		if (!new)
+			return ;
+		if (*lst == NULL)
+		{
+			*lst = new;
+			new->prev = NULL;
+			new->next = NULL;
+		}
+		else
+		{
+			new->next = *lst;
+			new->prev = NULL;
+			*lst = new;
+		}
+	}
 }
-*/
